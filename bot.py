@@ -1,4 +1,4 @@
-
+from pyrogram import Client
 import telegram
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, CallbackContext, MessageHandler, filters
@@ -45,7 +45,7 @@ API_ID = 24620300
 API_HASH = "9a098f01aa56c836f2e34aee4b7ef963"
 SESSION = "BQGC-ccAWwiLhsvQpd7jdiZmReOM8zqPb-Ra9Je4THqbS0mq6jYnFQS-K9LDpz-YHqQUMsLOuLqgHdD1edUMQmQhPyjF38VcurIT2b4LYZVeFSzfjXoUKwOUsGIFzlvfo6bUrzM7ouhcP86quH4IR2LfueSXWJdDnvu8qS3Gm5-d7W2M13vebJ5NfEymsUAJW6zjR9IusQ8f5Nei7UzUZsl1ww6cI8T_gcu6wiSP1LfWjOVQ97G6ab3-2jxJ-nPlA3cGi8q5dHhIB81LRZymSq03oSXEMJihIOXPfj2pI0XGlI-Y85nC60hSwXuV5Y02_VmAZ_j157Co39b2r77gjfXzvfMcjgAAAAG0-mQtAA"
 pytgcalls = PyTgCalls(
-        telegram.Client(
+          Client(
         "assistant",
         api_id=int(API_ID),
         api_hash=API_HASH,
