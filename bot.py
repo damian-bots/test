@@ -155,15 +155,17 @@ def send_search_results(update: Update, context: CallbackContext, jiosaavn_resul
     if jiosaavn_results:
       for item in jiosaavn_results:
           track_name = item.get('title', 'Unknown Title')  # ✅ Default value if 'title' is missing
-          artist_name = item.get('more_info')('singers') 
+          more_info = item.get('more_info', {})  # Ensure it's a dictionary, not None
+          artist_name = more_info.get('singers', 'Unknown Artist')  # ✅ Safe access
           button_text = f"{counter}. (JioSaavn) {track_name} - {artist_name}"
           keyboard.append([InlineKeyboardButton(button_text, callback_data=f"jiosaavn_{counter-1}")])
           counter += 1
 
     if spotify_results:
       for item in spotify_results:
-        track_name = item.get('name') 
-        artist_name = item.get('artists')(0)('name') 
+        track_name = item.get('title', 'Unknown Title')  # ✅ Default value if 'title' is missing
+        more_info = item.get('more_info', {})  # Ensure it's a dictionary, not None
+        artist_name = more_info.get('singers', 'Unknown Artist')  # ✅ Safe access
         button_text = f"{counter}. (Spotify) {track_name} - {artist_name}"
         keyboard.append([InlineKeyboardButton(button_text, callback_data=f"spotify_{counter-1}")])
         counter += 1
