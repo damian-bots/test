@@ -18,7 +18,7 @@ import subprocess
 import ffmpeg
 from pytgcalls import PyTgCalls
 from pytgcalls.types import AudioPiped, AudioQuality
-from pytgcalls import InputAudioStream
+from pytgcalls import StreamAudioEnded
 from pytgcalls.types import HighQualityAudio
 
 load_dotenv()
