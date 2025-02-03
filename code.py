@@ -165,7 +165,7 @@ def send_search_results(update: Update, context: CallbackContext, jiosaavn_resul
         track_name = item['name']
         artist_name = item['artists'][0]['name']
         button_text = f"{counter}. (Spotify) {track_name} - {artist_name}"
-        keyboard.append([InlineKeyboardButton(button_text, callback_data=f"spotify_{counter-1}"))
+        keyboard.append([InlineKeyboardButton(button_text, callback_data=f"spotify_{counter-1}")])
         counter += 1
 
     if not keyboard:
