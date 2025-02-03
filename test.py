@@ -23,13 +23,13 @@ logger = logging.getLogger(__name__)
 
 # --- API Setup ---
 # Spotify API
-SPOTIFY_CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
-SPOTIFY_CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
+SPOTIFY_CLIENT_ID = "95f4f5c6df5744698035a0948e801ad9"
+SPOTIFY_CLIENT_SECRET = "4b03167b38c943c3857333b3f5ea95ea"
 spotify_credentials_manager = SpotifyClientCredentials(client_id=SPOTIFY_CLIENT_ID, client_secret=SPOTIFY_CLIENT_SECRET)
 sp = spotipy.Spotify(client_credentials_manager=spotify_credentials_manager)
 
 # Telegram Bot API
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+BOT_TOKEN = "7741293072:AAEiWZSyFz1V39uQYbHEk10BTUoPYiUxyS4"
 updater = Updater(BOT_TOKEN)
 dispatcher = updater.dispatcher
 
