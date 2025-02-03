@@ -154,8 +154,8 @@ def send_search_results(update: Update, context: CallbackContext, jiosaavn_resul
     counter = 1
     if jiosaavn_results:
       for item in jiosaavn_results:
-          track_name = item('title') 
-          artist_name = item('more_info')('singers') 
+          track_name = item.get('title', 'Unknown Title')  # ✅ Default value if 'title' is missing
+          artist_name = item['more_info']['singers']
           button_text = f"{counter}. (JioSaavn) {track_name} - {artist_name}"
           keyboard.append([InlineKeyboardButton(button_text, callback_data=f"jiosaavn_{counter-1}")])
           counter += 1
