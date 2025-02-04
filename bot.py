@@ -112,7 +112,7 @@ async def stream_audio(chat_id: int, audio_file: BytesIO):
         return
       await pytgcalls.join_group_call(
           chat_id,
-          InputAudioStream(
+          AudioPiped(
               pcm_audio,
             ),
           )
@@ -154,18 +154,18 @@ def send_search_results(update: Update, context: CallbackContext, jiosaavn_resul
     counter = 1
     if jiosaavn_results:
       for item in jiosaavn_results:
-          track_name = item.get('title')  # ✅ Default value if 'title' is missing
-          more_info = item.get('more_info')  # Ensure it's a dictionary, not None
-          artist_name = more_info.get('singers')  # ✅ Safe access
+          track_name = item.get('title', 'Unknown Title')  # ✅ Default value if 'title' is missing
+          more_info = item.get('more_info', {})  # Ensure it's a dictionary, not None
+          artist_name = more_info.get('singers', 'Unknown Artist')  # ✅ Safe access
           button_text = f"{counter}. (JioSaavn) {track_name} - {artist_name}"
           keyboard.append([InlineKeyboardButton(button_text, callback_data=f"jiosaavn_{counter-1}")])
           counter += 1
 
     if spotify_results:
       for item in spotify_results:
-        track_name = item.get('title')  # ✅ Default value if 'title' is missing
-        more_info = item.get('more_info')  # Ensure it's a dictionary, not None
-        artist_name = more_info.get('singers')  # ✅ Safe access
+        track_name = item.get('title', 'Unknown Title')  # ✅ Default value if 'title' is missing
+        more_info = item.get('more_info', {})  # Ensure it's a dictionary, not None
+        artist_name = more_info.get('singers', 'Unknown Artist')  # ✅ Safe access
         button_text = f"{counter}. (Spotify) {track_name} - {artist_name}"
         keyboard.append([InlineKeyboardButton(button_text, callback_data=f"spotify_{counter-1}")])
         counter += 1
