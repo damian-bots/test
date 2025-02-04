@@ -17,9 +17,8 @@ import json
 import subprocess
 import ffmpeg
 from pytgcalls import PyTgCalls
-from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
-from pytgcalls.types.input_stream.quality import HighQualityAudio, MediumQualityVideo
-from pytgcalls.types.stream import StreamAudioEnded
+from pytgcalls.types import AudioPiped, AudioQuality
+from pytgcalls.types.input_stream.quality import HighQualityAudio
 
 load_dotenv()
 
